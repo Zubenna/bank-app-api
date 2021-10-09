@@ -20,6 +20,8 @@ module BankAccounts
         @bank_account.update!(balance: @bank_account.balance + @amount)
       when 'balance'
         @bank_account.update!(balance: @bank_account.balance)
+      when 'transactions'
+        @bank_account = @bank_account.account_transactions
       end
 
       @bank_account

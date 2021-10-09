@@ -19,7 +19,7 @@ module BankAccounts
     private
 
     def validate_withdrawal!
-      @errors << 'Not enough funds' if @bank_account.balance - @amount < 0.00
+      @errors << 'Not enough funds' if @bank_account.balance - @amount <= 0.00
     end
 
     #   def validate_existence_of_account!
