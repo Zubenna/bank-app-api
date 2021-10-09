@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    has_secure_password
+    
     has_many :bank_accounts
     validates_presence_of :first_name, :last_name, :middle_name, :username, :user_number, :password_digest, :phone_number, :email
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze

@@ -17,6 +17,8 @@ module BankAccounts
           @bank_account.update!(balance: @bank_account.balance - @amount)
         elsif @transaction_type == "deposit"
           @bank_account.update!(balance: @bank_account.balance + @amount)
+        elsif @transaction_type == "balance"
+          @bank_account.update!(balance: @bank_account.balance)
         end
         
         @bank_account

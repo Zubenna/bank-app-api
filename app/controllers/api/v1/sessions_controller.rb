@@ -2,10 +2,10 @@ module Api
     module V1
       class SessionsController < ApplicationController
         def create
-          user = User.find_by(username: session_params[:username])
-          if user&.authenticate(session_params[:password])
+          @user = User.find_by(username: session_params[:username])
+          if @user&.authenticate(session_params[:password])
             login!
-            render json: { status: 'created', logged_in: true, data: user }, status: 201
+            render json: { status: 'created', logged_in: true, data:  @user }, status: 201
           else
             render json: { status: 401 }, status: 401
           end
