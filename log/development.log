@@ -24490,3 +24490,596 @@ Processing by Api::V1::BankAccountsController#index as */*
 Completed 200 OK in 120ms (Views: 102.9ms | ActiveRecord: 2.1ms | Allocations: 13107)
 
 
+Started GET "/api/v1/bank_accounts/index" for ::1 at 2021-10-10 04:28:27 +0100
+  [1m[35m (110.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/namdy/Desktop/Inter-test/bank-app-api/app/controllers/api/v1/bank_accounts_controller.rb:137: syntax error, unexpected `end', expecting end-of-input):
+  
+app/controllers/api/v1/bank_accounts_controller.rb:137: syntax error, unexpected `end', expecting end-of-input
+app/controllers/api/v1/bank_accounts_controller.rb:137: syntax error, unexpected `end', expecting end-of-input
+Started GET "/api/v1/bank_accounts/index" for ::1 at 2021-10-10 04:30:08 +0100
+Processing by Api::V1::BankAccountsController#index as */*
+  Parameters: {"user_id"=>4, "account_number"=>8492738, "bank_account"=>{"user_id"=>4, "account_number"=>8492738}}
+  [1m[36mBankAccount Load (77.5ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts"[0m
+  ↳ app/controllers/api/v1/bank_accounts_controller.rb:100:in `index'
+  [1m[36mUser Load (23.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/bank_accounts_controller.rb:100:in `index'
+Completed 200 OK in 252ms (Views: 77.4ms | ActiveRecord: 293.1ms | Allocations: 14200)
+
+
+Started GET "/api/v1/bank_accounts/total_users" for ::1 at 2021-10-10 04:31:41 +0100
+Processing by Api::V1::BankAccountsController#total_users as */*
+  Parameters: {"user_id"=>4, "account_number"=>8492738, "bank_account"=>{"user_id"=>4, "account_number"=>8492738}}
+  [1m[35m (26.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/controllers/api/v1/bank_accounts_controller.rb:122:in `total_users'
+Completed 200 OK in 29ms (Views: 0.3ms | ActiveRecord: 26.5ms | Allocations: 754)
+
+
+Started GET "/api/v1/bank_accounts/total_accounts" for ::1 at 2021-10-10 04:32:07 +0100
+Processing by Api::V1::BankAccountsController#total_accounts as */*
+  Parameters: {"user_id"=>4, "account_number"=>8492738, "bank_account"=>{"user_id"=>4, "account_number"=>8492738}}
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "bank_accounts"[0m
+  ↳ app/controllers/api/v1/bank_accounts_controller.rb:113:in `total_accounts'
+Completed 200 OK in 14ms (Views: 0.3ms | ActiveRecord: 2.5ms | Allocations: 730)
+
+
+Started POST "/api/v1/bank_accounts/check_balance" for ::1 at 2021-10-10 04:39:47 +0100
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/bank_accounts/check_balance"):
+  
+actionpack (6.0.4.1) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.4.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.4.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.4.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.4.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.4.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.4.1) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.4.1) lib/rails/engine.rb:527:in `call'
+puma (4.3.8) lib/puma/configuration.rb:228:in `call'
+puma (4.3.8) lib/puma/server.rb:718:in `handle_request'
+puma (4.3.8) lib/puma/server.rb:472:in `process_client'
+puma (4.3.8) lib/puma/server.rb:328:in `block in run'
+puma (4.3.8) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/api/v1/bank_accounts/check_balance" for ::1 at 2021-10-10 04:39:57 +0100
+Processing by Api::V1::BankAccountsController#check_balance as */*
+  Parameters: {"amount"=>0, "transaction_type"=>"balance", "bank_account_id"=>3, "bank_account"=>{}}
+  [1m[36mBankAccount Load (1.8ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+Completed 500 Internal Server Error in 376ms (ActiveRecord: 7.1ms | Allocations: 64864)
+
+
+  
+NameError (undefined local variable or method `amount' for #<Api::V1::BankAccountsController:0x00007f8c58140280>):
+  
+app/controllers/api/v1/bank_accounts_controller.rb:66:in `check_balance'
+Started GET "/api/v1/bank_accounts/check_balance" for ::1 at 2021-10-10 04:42:09 +0100
+Processing by Api::V1::BankAccountsController#check_balance as */*
+  Parameters: {"amount"=>0, "transaction_type"=>"balance", "bank_account_id"=>3, "bank_account"=>{}}
+  [1m[36mBankAccount Load (0.6ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+Completed 500 Internal Server Error in 445ms (ActiveRecord: 23.3ms | Allocations: 64429)
+
+
+  
+NameError (undefined local variable or method `amount' for #<Api::V1::BankAccountsController:0x000055a847686380>):
+  
+app/controllers/api/v1/bank_accounts_controller.rb:66:in `check_balance'
+Started GET "/api/v1/bank_accounts/check_balance" for ::1 at 2021-10-10 04:44:12 +0100
+Processing by Api::V1::BankAccountsController#check_balance as */*
+  Parameters: {"amount"=>0.0, "transaction_type"=>"balance", "bank_account_id"=>3, "bank_account"=>{}}
+  [1m[36mBankAccount Load (9.6ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+Completed 500 Internal Server Error in 305ms (ActiveRecord: 9.6ms | Allocations: 61306)
+
+
+  
+NameError (undefined local variable or method `amount' for #<Api::V1::BankAccountsController:0x00007f8c789ae140>):
+  
+app/controllers/api/v1/bank_accounts_controller.rb:66:in `check_balance'
+Started GET "/api/v1/bank_accounts/check_balance" for ::1 at 2021-10-10 04:48:56 +0100
+  
+SyntaxError (/home/namdy/Desktop/Inter-test/bank-app-api/app/controllers/api/v1/bank_accounts_controller.rb:55: syntax error, unexpected ':', expecting `end'
+        amount: 0.0,
+              ^
+):
+  
+app/controllers/api/v1/bank_accounts_controller.rb:55: syntax error, unexpected ':', expecting `end'
+app/controllers/api/v1/bank_accounts_controller.rb:55: syntax error, unexpected ':', expecting `end'
+Started GET "/api/v1/bank_accounts/check_balance" for ::1 at 2021-10-10 04:49:51 +0100
+  
+SyntaxError (/home/namdy/Desktop/Inter-test/bank-app-api/app/controllers/api/v1/bank_accounts_controller.rb:55: syntax error, unexpected ':', expecting `end'
+        amount: 0.0
+              ^
+):
+  
+app/controllers/api/v1/bank_accounts_controller.rb:55: syntax error, unexpected ':', expecting `end'
+app/controllers/api/v1/bank_accounts_controller.rb:55: syntax error, unexpected ':', expecting `end'
+Started GET "/api/v1/bank_accounts/check_balance" for ::1 at 2021-10-10 04:51:15 +0100
+Processing by Api::V1::BankAccountsController#check_balance as */*
+  Parameters: {"transaction_type"=>"balance", "bank_account_id"=>3, "bank_account"=>{}}
+Completed 500 Internal Server Error in 339ms (ActiveRecord: 6.2ms | Allocations: 60729)
+
+
+  
+NameError (undefined local variable or method `amount' for #<Api::V1::BankAccountsController:0x00007f8c78801568>):
+  
+app/controllers/api/v1/bank_accounts_controller.rb:59:in `check_balance'
+Started GET "/api/v1/bank_accounts/check_balance" for ::1 at 2021-10-10 04:53:55 +0100
+Processing by Api::V1::BankAccountsController#check_balance as */*
+  Parameters: {"transaction_type"=>"balance", "bank_account_id"=>3, "bank_account"=>{}}
+  [1m[36mBankAccount Load (2.4ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:7:in `initialize'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Exists? (102.0ms)[0m  [1m[34mSELECT 1 AS one FROM "account_transactions" WHERE "account_transactions"."transaction_number" = $1 LIMIT $2[0m  [["transaction_number", "7128e478-19c9-492f-a6f1-6fdad5371c9a"], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+Completed 422 Unprocessable Entity in 394ms (ActiveRecord: 122.1ms | Allocations: 14745)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Amount can't be blank, Amount is not a number):
+  
+app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+app/controllers/api/v1/bank_accounts_controller.rb:70:in `check_balance'
+Started GET "/api/v1/bank_accounts/check_balance" for ::1 at 2021-10-10 04:54:26 +0100
+Processing by Api::V1::BankAccountsController#check_balance as */*
+  Parameters: {"amount"=>0.0, "transaction_type"=>"balance", "bank_account_id"=>3, "bank_account"=>{}}
+  [1m[36mBankAccount Load (5.6ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:7:in `initialize'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "account_transactions" WHERE "account_transactions"."transaction_number" = $1 LIMIT $2[0m  [["transaction_number", "4ea2b0e7-9bf9-49c7-80a0-884f6986e308"], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Create (341.5ms)[0m  [1m[32mINSERT INTO "account_transactions" ("amount", "transaction_type", "transaction_number", "bank_account_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "0.0"], ["transaction_type", "balance"], ["transaction_number", "4ea2b0e7-9bf9-49c7-80a0-884f6986e308"], ["bank_account_id", 3], ["created_at", "2021-10-10 03:54:26.576935"], ["updated_at", "2021-10-10 03:54:26.576935"]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (214.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[36mBankAccount Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "bank_accounts" WHERE "bank_accounts"."account_number" = $1 AND "bank_accounts"."id" != $2 LIMIT $3[0m  [["account_number", "2378444"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+Completed 200 OK in 832ms (Views: 0.3ms | ActiveRecord: 572.8ms | Allocations: 18267)
+
+
+Started GET "/api/v1/bank_accounts/check_balance" for ::1 at 2021-10-10 04:54:33 +0100
+Processing by Api::V1::BankAccountsController#check_balance as */*
+  Parameters: {"amount"=>0.0, "transaction_type"=>"balance", "bank_account_id"=>1, "bank_account"=>{}}
+  [1m[36mBankAccount Load (2.9ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:7:in `initialize'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Exists? (2.5ms)[0m  [1m[34mSELECT 1 AS one FROM "account_transactions" WHERE "account_transactions"."transaction_number" = $1 LIMIT $2[0m  [["transaction_number", "1d7ad986-707e-49b9-a713-5a781ec8e39d"], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Create (0.8ms)[0m  [1m[32mINSERT INTO "account_transactions" ("amount", "transaction_type", "transaction_number", "bank_account_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "0.0"], ["transaction_type", "balance"], ["transaction_number", "1d7ad986-707e-49b9-a713-5a781ec8e39d"], ["bank_account_id", 1], ["created_at", "2021-10-10 03:54:33.579194"], ["updated_at", "2021-10-10 03:54:33.579194"]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (74.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[36mUser Load (4.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[36mBankAccount Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "bank_accounts" WHERE "bank_accounts"."account_number" = $1 AND "bank_accounts"."id" != $2 LIMIT $3[0m  [["account_number", "6754398763"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+Completed 200 OK in 255ms (Views: 0.3ms | ActiveRecord: 89.5ms | Allocations: 8958)
+
+
+Started GET "/api/v1/bank_accounts/check_balance" for ::1 at 2021-10-10 04:54:39 +0100
+Processing by Api::V1::BankAccountsController#check_balance as */*
+  Parameters: {"amount"=>0.0, "transaction_type"=>"balance", "bank_account_id"=>2, "bank_account"=>{}}
+  [1m[36mBankAccount Load (8.5ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:7:in `initialize'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Exists? (3.7ms)[0m  [1m[34mSELECT 1 AS one FROM "account_transactions" WHERE "account_transactions"."transaction_number" = $1 LIMIT $2[0m  [["transaction_number", "39e6a28c-6e3d-4b57-ae5d-4f1eea932f4a"], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Create (2.6ms)[0m  [1m[32mINSERT INTO "account_transactions" ("amount", "transaction_type", "transaction_number", "bank_account_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "0.0"], ["transaction_type", "balance"], ["transaction_number", "39e6a28c-6e3d-4b57-ae5d-4f1eea932f4a"], ["bank_account_id", 2], ["created_at", "2021-10-10 03:54:39.134443"], ["updated_at", "2021-10-10 03:54:39.134443"]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (21.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[36mBankAccount Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "bank_accounts" WHERE "bank_accounts"."account_number" = $1 AND "bank_accounts"."id" != $2 LIMIT $3[0m  [["account_number", "237834"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+Completed 200 OK in 183ms (Views: 0.3ms | ActiveRecord: 39.5ms | Allocations: 8954)
+
+
+Started GET "/api/v1/bank_accounts/check_balance" for ::1 at 2021-10-10 04:54:46 +0100
+Processing by Api::V1::BankAccountsController#check_balance as */*
+  Parameters: {"amount"=>0.0, "transaction_type"=>"balance", "bank_account_id"=>3, "bank_account"=>{}}
+  [1m[36mBankAccount Load (9.2ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:7:in `initialize'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "account_transactions" WHERE "account_transactions"."transaction_number" = $1 LIMIT $2[0m  [["transaction_number", "06605731-7ffe-4d4d-b9a1-3621f3315ffd"], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Create (3.6ms)[0m  [1m[32mINSERT INTO "account_transactions" ("amount", "transaction_type", "transaction_number", "bank_account_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "0.0"], ["transaction_type", "balance"], ["transaction_number", "06605731-7ffe-4d4d-b9a1-3621f3315ffd"], ["bank_account_id", 3], ["created_at", "2021-10-10 03:54:46.160339"], ["updated_at", "2021-10-10 03:54:46.160339"]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (46.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (2.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[36mUser Load (11.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[36mBankAccount Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "bank_accounts" WHERE "bank_accounts"."account_number" = $1 AND "bank_accounts"."id" != $2 LIMIT $3[0m  [["account_number", "2378444"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+Completed 200 OK in 250ms (Views: 0.4ms | ActiveRecord: 75.6ms | Allocations: 8961)
+
+
+Started GET "/api/v1/bank_accounts/check_balance" for ::1 at 2021-10-10 04:54:52 +0100
+Processing by Api::V1::BankAccountsController#check_balance as */*
+  Parameters: {"amount"=>0.0, "transaction_type"=>"balance", "bank_account_id"=>4, "bank_account"=>{}}
+  [1m[36mBankAccount Load (4.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:7:in `initialize'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Exists? (13.0ms)[0m  [1m[34mSELECT 1 AS one FROM "account_transactions" WHERE "account_transactions"."transaction_number" = $1 LIMIT $2[0m  [["transaction_number", "4c510323-ae4c-4d93-b50d-797dd99ee253"], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Create (4.2ms)[0m  [1m[32mINSERT INTO "account_transactions" ("amount", "transaction_type", "transaction_number", "bank_account_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "0.0"], ["transaction_type", "balance"], ["transaction_number", "4c510323-ae4c-4d93-b50d-797dd99ee253"], ["bank_account_id", 4], ["created_at", "2021-10-10 03:54:52.298548"], ["updated_at", "2021-10-10 03:54:52.298548"]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (30.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[36mBankAccount Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "bank_accounts" WHERE "bank_accounts"."account_number" = $1 AND "bank_accounts"."id" != $2 LIMIT $3[0m  [["account_number", "33377774"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+Completed 200 OK in 140ms (Views: 0.5ms | ActiveRecord: 55.6ms | Allocations: 8964)
+
+
+Started GET "/api/v1/bank_accounts/check_balance" for ::1 at 2021-10-10 04:54:57 +0100
+Processing by Api::V1::BankAccountsController#check_balance as */*
+  Parameters: {"amount"=>0.0, "transaction_type"=>"balance", "bank_account_id"=>5, "bank_account"=>{}}
+  [1m[36mBankAccount Load (1.8ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:7:in `initialize'
+  [1m[35m (2.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Exists? (14.3ms)[0m  [1m[34mSELECT 1 AS one FROM "account_transactions" WHERE "account_transactions"."transaction_number" = $1 LIMIT $2[0m  [["transaction_number", "b5b138a4-ca7e-43b6-8b1a-c5c08c27738d"], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Create (9.2ms)[0m  [1m[32mINSERT INTO "account_transactions" ("amount", "transaction_type", "transaction_number", "bank_account_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "0.0"], ["transaction_type", "balance"], ["transaction_number", "b5b138a4-ca7e-43b6-8b1a-c5c08c27738d"], ["bank_account_id", 5], ["created_at", "2021-10-10 03:54:57.807013"], ["updated_at", "2021-10-10 03:54:57.807013"]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (18.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (9.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[36mUser Load (13.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[36mBankAccount Exists? (7.7ms)[0m  [1m[34mSELECT 1 AS one FROM "bank_accounts" WHERE "bank_accounts"."account_number" = $1 AND "bank_accounts"."id" != $2 LIMIT $3[0m  [["account_number", "8492738"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+Completed 200 OK in 235ms (Views: 0.3ms | ActiveRecord: 78.5ms | Allocations: 8953)
+
+
+Started GET "/api/v1/bank_accounts/check_balance" for ::1 at 2021-10-10 04:55:11 +0100
+Processing by Api::V1::BankAccountsController#check_balance as */*
+  Parameters: {"amount"=>0.0, "transaction_type"=>"balance", "bank_account_id"=>6, "bank_account"=>{}}
+  [1m[36mBankAccount Load (3.2ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+Completed 402 Payment Required in 25ms (Views: 0.3ms | ActiveRecord: 3.2ms | Allocations: 850)
+
+
+Started GET "/api/v1/bank_accounts/check_balance" for ::1 at 2021-10-10 04:55:40 +0100
+Processing by Api::V1::BankAccountsController#check_balance as */*
+  Parameters: {"amount"=>0.0, "transaction_type"=>"balance", "bank_account_id"=>2, "bank_account"=>{}}
+  [1m[36mBankAccount Load (0.7ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:7:in `initialize'
+  [1m[35m (3.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "account_transactions" WHERE "account_transactions"."transaction_number" = $1 LIMIT $2[0m  [["transaction_number", "8820da14-d1ef-45f9-825b-210244268e30"], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Create (0.8ms)[0m  [1m[32mINSERT INTO "account_transactions" ("amount", "transaction_type", "transaction_number", "bank_account_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "0.0"], ["transaction_type", "balance"], ["transaction_number", "8820da14-d1ef-45f9-825b-210244268e30"], ["bank_account_id", 2], ["created_at", "2021-10-10 03:55:40.579300"], ["updated_at", "2021-10-10 03:55:40.579300"]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (40.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[36mBankAccount Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "bank_accounts" WHERE "bank_accounts"."account_number" = $1 AND "bank_accounts"."id" != $2 LIMIT $3[0m  [["account_number", "237834"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:22:in `execute!'
+Completed 200 OK in 172ms (Views: 0.3ms | ActiveRecord: 50.5ms | Allocations: 8952)
+
+
+Started GET "/api/v1/bank_accounts/list_transactions" for ::1 at 2021-10-10 04:56:54 +0100
+Processing by Api::V1::BankAccountsController#list_transactions as */*
+  Parameters: {"amount"=>0.0, "transaction_type"=>"transactions", "bank_account_id"=>2, "bank_account"=>{}}
+  [1m[36mBankAccount Load (0.4ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:7:in `initialize'
+  [1m[35m (25.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "account_transactions" WHERE "account_transactions"."transaction_number" = $1 LIMIT $2[0m  [["transaction_number", "c7429eb3-3fb4-439e-accb-2aab355bcefc"], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Create (0.8ms)[0m  [1m[32mINSERT INTO "account_transactions" ("amount", "transaction_type", "transaction_number", "bank_account_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "0.0"], ["transaction_type", "transactions"], ["transaction_number", "c7429eb3-3fb4-439e-accb-2aab355bcefc"], ["bank_account_id", 2], ["created_at", "2021-10-10 03:56:54.416098"], ["updated_at", "2021-10-10 03:56:54.416098"]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (31.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Load (0.7ms)[0m  [1m[34mSELECT "account_transactions".* FROM "account_transactions" WHERE "account_transactions"."bank_account_id" = $1[0m  [["bank_account_id", 2]]
+  ↳ app/controllers/api/v1/bank_accounts_controller.rb:92:in `list_transactions'
+Completed 200 OK in 565ms (Views: 13.4ms | ActiveRecord: 60.6ms | Allocations: 9620)
+
+
+Started GET "/api/v1/bank_accounts/list_transactions" for ::1 at 2021-10-10 04:57:38 +0100
+Processing by Api::V1::BankAccountsController#list_transactions as */*
+  Parameters: {"amount"=>0.0, "transaction_type"=>"transactions", "bank_account_id"=>6, "bank_account"=>{}}
+  [1m[36mBankAccount Load (1.6ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+Completed 402 Payment Required in 7ms (Views: 0.3ms | ActiveRecord: 1.6ms | Allocations: 850)
+
+
+Started GET "/api/v1/bank_accounts/list_transactions" for ::1 at 2021-10-10 04:57:46 +0100
+Processing by Api::V1::BankAccountsController#list_transactions as */*
+  Parameters: {"amount"=>0.0, "transaction_type"=>"transactions", "bank_account_id"=>3, "bank_account"=>{}}
+  [1m[36mBankAccount Load (2.8ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:7:in `initialize'
+  [1m[35m (4.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Exists? (3.1ms)[0m  [1m[34mSELECT 1 AS one FROM "account_transactions" WHERE "account_transactions"."transaction_number" = $1 LIMIT $2[0m  [["transaction_number", "dcfcd32d-a3dd-4263-aa53-6221973416f0"], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Create (13.2ms)[0m  [1m[32mINSERT INTO "account_transactions" ("amount", "transaction_type", "transaction_number", "bank_account_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "0.0"], ["transaction_type", "transactions"], ["transaction_number", "dcfcd32d-a3dd-4263-aa53-6221973416f0"], ["bank_account_id", 3], ["created_at", "2021-10-10 03:57:46.291006"], ["updated_at", "2021-10-10 03:57:46.291006"]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (16.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Load (5.2ms)[0m  [1m[34mSELECT "account_transactions".* FROM "account_transactions" WHERE "account_transactions"."bank_account_id" = $1[0m  [["bank_account_id", 3]]
+  ↳ app/controllers/api/v1/bank_accounts_controller.rb:92:in `list_transactions'
+Completed 200 OK in 201ms (Views: 24.7ms | ActiveRecord: 44.8ms | Allocations: 6352)
+
+
+Started POST "/api/v1/bank_accounts/new_withdraw" for ::1 at 2021-10-10 04:58:45 +0100
+Processing by Api::V1::BankAccountsController#new_withdraw as */*
+  Parameters: {"amount"=>2000, "transaction_type"=>"withdraw", "bank_account_id"=>2, "bank_account"=>{}}
+  [1m[36mBankAccount Load (0.6ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_withdrawal.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:7:in `initialize'
+  [1m[35m (2.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "account_transactions" WHERE "account_transactions"."transaction_number" = $1 LIMIT $2[0m  [["transaction_number", "14e5d2d6-ce57-44a7-b701-7d8787d8af4e"], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Create (0.9ms)[0m  [1m[32mINSERT INTO "account_transactions" ("amount", "transaction_type", "transaction_number", "bank_account_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "2000.0"], ["transaction_type", "withdraw"], ["transaction_number", "14e5d2d6-ce57-44a7-b701-7d8787d8af4e"], ["bank_account_id", 2], ["created_at", "2021-10-10 03:58:45.421539"], ["updated_at", "2021-10-10 03:58:45.421539"]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (26.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:18:in `execute!'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:18:in `execute!'
+  [1m[36mBankAccount Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "bank_accounts" WHERE "bank_accounts"."account_number" = $1 AND "bank_accounts"."id" != $2 LIMIT $3[0m  [["account_number", "237834"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:18:in `execute!'
+  [1m[36mBankAccount Update (0.7ms)[0m  [1m[33mUPDATE "bank_accounts" SET "balance" = $1, "updated_at" = $2 WHERE "bank_accounts"."id" = $3[0m  [["balance", "17619.0"], ["updated_at", "2021-10-10 03:58:45.518722"], ["id", 2]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:18:in `execute!'
+  [1m[35m (8.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:18:in `execute!'
+Completed 200 OK in 236ms (Views: 0.5ms | ActiveRecord: 43.9ms | Allocations: 11685)
+
+
+Started POST "/api/v1/bank_accounts/new_withdraw" for ::1 at 2021-10-10 04:59:09 +0100
+Processing by Api::V1::BankAccountsController#new_withdraw as */*
+  Parameters: {"amount"=>17619, "transaction_type"=>"withdraw", "bank_account_id"=>2, "bank_account"=>{}}
+  [1m[36mBankAccount Load (0.4ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_withdrawal.rb:7:in `initialize'
+Completed 402 Payment Required in 34ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 1515)
+
+
+Started POST "/api/v1/bank_accounts/new_withdraw" for ::1 at 2021-10-10 04:59:25 +0100
+Processing by Api::V1::BankAccountsController#new_withdraw as */*
+  Parameters: {"amount"=>1761, "transaction_type"=>"withdraw", "bank_account_id"=>2, "bank_account"=>{}}
+  [1m[36mBankAccount Load (0.4ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_withdrawal.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:7:in `initialize'
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "account_transactions" WHERE "account_transactions"."transaction_number" = $1 LIMIT $2[0m  [["transaction_number", "d5bdd2db-cdbc-4753-90c0-8c7df85c24c8"], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Create (4.1ms)[0m  [1m[32mINSERT INTO "account_transactions" ("amount", "transaction_type", "transaction_number", "bank_account_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "1761.0"], ["transaction_type", "withdraw"], ["transaction_number", "d5bdd2db-cdbc-4753-90c0-8c7df85c24c8"], ["bank_account_id", 2], ["created_at", "2021-10-10 03:59:25.597096"], ["updated_at", "2021-10-10 03:59:25.597096"]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (21.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:18:in `execute!'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:18:in `execute!'
+  [1m[36mBankAccount Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "bank_accounts" WHERE "bank_accounts"."account_number" = $1 AND "bank_accounts"."id" != $2 LIMIT $3[0m  [["account_number", "237834"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:18:in `execute!'
+  [1m[36mBankAccount Update (0.7ms)[0m  [1m[33mUPDATE "bank_accounts" SET "balance" = $1, "updated_at" = $2 WHERE "bank_accounts"."id" = $3[0m  [["balance", "15858.0"], ["updated_at", "2021-10-10 03:59:25.684028"], ["id", 2]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:18:in `execute!'
+  [1m[35m (19.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:18:in `execute!'
+Completed 200 OK in 173ms (Views: 0.3ms | ActiveRecord: 51.3ms | Allocations: 10472)
+
+
+Started POST "/api/v1/bank_accounts/new_withdraw" for ::1 at 2021-10-10 04:59:38 +0100
+Processing by Api::V1::BankAccountsController#new_withdraw as */*
+  Parameters: {"amount"=>1761, "transaction_type"=>"withdraw", "bank_account_id"=>6, "bank_account"=>{}}
+  [1m[36mBankAccount Load (2.5ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+Completed 402 Payment Required in 12ms (Views: 0.3ms | ActiveRecord: 2.5ms | Allocations: 850)
+
+
+Started POST "/api/v1/bank_accounts/new_withdraw" for ::1 at 2021-10-10 04:59:46 +0100
+Processing by Api::V1::BankAccountsController#new_withdraw as */*
+  Parameters: {"amount"=>1761, "transaction_type"=>"withdraw", "bank_account_id"=>3, "bank_account"=>{}}
+  [1m[36mBankAccount Load (8.6ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_withdrawal.rb:7:in `initialize'
+Completed 402 Payment Required in 54ms (Views: 0.3ms | ActiveRecord: 8.7ms | Allocations: 1515)
+
+
+Started POST "/api/v1/bank_accounts/new_withdraw" for ::1 at 2021-10-10 04:59:53 +0100
+Processing by Api::V1::BankAccountsController#new_withdraw as */*
+  Parameters: {"amount"=>1761, "transaction_type"=>"withdraw", "bank_account_id"=>1, "bank_account"=>{}}
+  [1m[36mBankAccount Load (1.7ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_withdrawal.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.1ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:7:in `initialize'
+  [1m[35m (5.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Exists? (5.9ms)[0m  [1m[34mSELECT 1 AS one FROM "account_transactions" WHERE "account_transactions"."transaction_number" = $1 LIMIT $2[0m  [["transaction_number", "75f0a062-8920-4310-98a0-32527e0dc126"], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Create (3.6ms)[0m  [1m[32mINSERT INTO "account_transactions" ("amount", "transaction_type", "transaction_number", "bank_account_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "1761.0"], ["transaction_type", "withdraw"], ["transaction_number", "75f0a062-8920-4310-98a0-32527e0dc126"], ["bank_account_id", 1], ["created_at", "2021-10-10 03:59:53.951422"], ["updated_at", "2021-10-10 03:59:53.951422"]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (35.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (10.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:18:in `execute!'
+  [1m[36mUser Load (5.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:18:in `execute!'
+  [1m[36mBankAccount Exists? (3.7ms)[0m  [1m[34mSELECT 1 AS one FROM "bank_accounts" WHERE "bank_accounts"."account_number" = $1 AND "bank_accounts"."id" != $2 LIMIT $3[0m  [["account_number", "6754398763"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:18:in `execute!'
+  [1m[36mBankAccount Update (3.5ms)[0m  [1m[33mUPDATE "bank_accounts" SET "balance" = $1, "updated_at" = $2 WHERE "bank_accounts"."id" = $3[0m  [["balance", "104396.0"], ["updated_at", "2021-10-10 03:59:54.047022"], ["id", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:18:in `execute!'
+  [1m[35m (4.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:18:in `execute!'
+Completed 200 OK in 221ms (Views: 0.3ms | ActiveRecord: 80.4ms | Allocations: 10472)
+
+
+Started POST "/api/v1/bank_accounts/new_deposit" for ::1 at 2021-10-10 05:00:25 +0100
+Processing by Api::V1::BankAccountsController#new_deposit as */*
+  Parameters: {"amount"=>1761, "transaction_type"=>"deposit", "bank_account_id"=>3, "bank_account"=>{}}
+  [1m[36mBankAccount Load (2.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:7:in `initialize'
+  [1m[35m (4.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "account_transactions" WHERE "account_transactions"."transaction_number" = $1 LIMIT $2[0m  [["transaction_number", "81b4c971-df4c-4467-a395-bfa182a6122e"], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Create (7.7ms)[0m  [1m[32mINSERT INTO "account_transactions" ("amount", "transaction_type", "transaction_number", "bank_account_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "1761.0"], ["transaction_type", "deposit"], ["transaction_number", "81b4c971-df4c-4467-a395-bfa182a6122e"], ["bank_account_id", 3], ["created_at", "2021-10-10 04:00:25.459128"], ["updated_at", "2021-10-10 04:00:25.459128"]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (11.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:20:in `execute!'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:20:in `execute!'
+  [1m[36mBankAccount Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "bank_accounts" WHERE "bank_accounts"."account_number" = $1 AND "bank_accounts"."id" != $2 LIMIT $3[0m  [["account_number", "2378444"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:20:in `execute!'
+  [1m[36mBankAccount Update (1.7ms)[0m  [1m[33mUPDATE "bank_accounts" SET "balance" = $1, "updated_at" = $2 WHERE "bank_accounts"."id" = $3[0m  [["balance", "1761.0"], ["updated_at", "2021-10-10 04:00:25.527207"], ["id", 3]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:20:in `execute!'
+  [1m[35m (8.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:20:in `execute!'
+Completed 200 OK in 152ms (Views: 0.3ms | ActiveRecord: 39.2ms | Allocations: 9818)
+
+
+Started POST "/api/v1/bank_accounts/new_deposit" for ::1 at 2021-10-10 05:00:45 +0100
+Processing by Api::V1::BankAccountsController#new_deposit as */*
+  Parameters: {"amount"=>1761, "transaction_type"=>"deposit", "bank_account_id"=>6, "bank_account"=>{}}
+  [1m[36mBankAccount Load (1.4ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+Completed 402 Payment Required in 10ms (Views: 0.3ms | ActiveRecord: 1.4ms | Allocations: 850)
+
+
+Started POST "/api/v1/bank_accounts/new_deposit" for ::1 at 2021-10-10 05:00:52 +0100
+Processing by Api::V1::BankAccountsController#new_deposit as */*
+  Parameters: {"amount"=>1761, "transaction_type"=>"deposit", "bank_account_id"=>4, "bank_account"=>{}}
+  [1m[36mBankAccount Load (0.6ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:7:in `initialize'
+  [1m[35m (3.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "account_transactions" WHERE "account_transactions"."transaction_number" = $1 LIMIT $2[0m  [["transaction_number", "dd80f6cf-f2dd-417f-ad70-dec078103ec4"], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Create (14.1ms)[0m  [1m[32mINSERT INTO "account_transactions" ("amount", "transaction_type", "transaction_number", "bank_account_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "1761.0"], ["transaction_type", "deposit"], ["transaction_number", "dd80f6cf-f2dd-417f-ad70-dec078103ec4"], ["bank_account_id", 4], ["created_at", "2021-10-10 04:00:52.253912"], ["updated_at", "2021-10-10 04:00:52.253912"]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (17.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:20:in `execute!'
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:20:in `execute!'
+  [1m[36mBankAccount Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "bank_accounts" WHERE "bank_accounts"."account_number" = $1 AND "bank_accounts"."id" != $2 LIMIT $3[0m  [["account_number", "33377774"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:20:in `execute!'
+  [1m[36mBankAccount Update (1.8ms)[0m  [1m[33mUPDATE "bank_accounts" SET "balance" = $1, "updated_at" = $2 WHERE "bank_accounts"."id" = $3[0m  [["balance", "1761.0"], ["updated_at", "2021-10-10 04:00:52.413312"], ["id", 4]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:20:in `execute!'
+  [1m[35m (13.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:20:in `execute!'
+Completed 200 OK in 273ms (Views: 0.4ms | ActiveRecord: 57.1ms | Allocations: 9823)
+
+
+Started POST "/api/v1/bank_accounts/new_deposit" for ::1 at 2021-10-10 05:00:58 +0100
+Processing by Api::V1::BankAccountsController#new_deposit as */*
+  Parameters: {"amount"=>1761, "transaction_type"=>"deposit", "bank_account_id"=>3, "bank_account"=>{}}
+  [1m[36mBankAccount Load (2.4ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/validate_new_transaction.rb:7:in `initialize'
+  [1m[36mCACHE BankAccount Load (0.0ms)[0m  [1m[34mSELECT "bank_accounts".* FROM "bank_accounts" WHERE "bank_accounts"."id" = $1 ORDER BY "bank_accounts"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:7:in `initialize'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "account_transactions" WHERE "account_transactions"."transaction_number" = $1 LIMIT $2[0m  [["transaction_number", "7f15cefe-4025-4ced-a1c9-7672ee1f417b"], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[36mAccountTransaction Create (0.7ms)[0m  [1m[32mINSERT INTO "account_transactions" ("amount", "transaction_type", "transaction_number", "bank_account_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["amount", "1761.0"], ["transaction_type", "deposit"], ["transaction_number", "7f15cefe-4025-4ced-a1c9-7672ee1f417b"], ["bank_account_id", 3], ["created_at", "2021-10-10 04:00:58.150133"], ["updated_at", "2021-10-10 04:00:58.150133"]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (43.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:11:in `execute!'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:20:in `execute!'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:20:in `execute!'
+  [1m[36mBankAccount Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "bank_accounts" WHERE "bank_accounts"."account_number" = $1 AND "bank_accounts"."id" != $2 LIMIT $3[0m  [["account_number", "2378444"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:20:in `execute!'
+  [1m[36mBankAccount Update (0.7ms)[0m  [1m[33mUPDATE "bank_accounts" SET "balance" = $1, "updated_at" = $2 WHERE "bank_accounts"."id" = $3[0m  [["balance", "3522.0"], ["updated_at", "2021-10-10 04:00:58.228868"], ["id", 3]]
+  ↳ app/operations/bank_accounts/perform_transaction.rb:20:in `execute!'
+  [1m[35m (55.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/operations/bank_accounts/perform_transaction.rb:20:in `execute!'
+Completed 200 OK in 184ms (Views: 0.3ms | ActiveRecord: 106.1ms | Allocations: 9821)
+
+
