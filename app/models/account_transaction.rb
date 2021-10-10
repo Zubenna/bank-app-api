@@ -1,7 +1,7 @@
 class AccountTransaction < ApplicationRecord
   belongs_to :bank_account
 
-  TRANSACTION_TYPES = %w[withdraw deposit balance].freeze
+  TRANSACTION_TYPES = %w[withdraw deposit balance transactions].freeze
   validates_presence_of :bank_account, :amount, :transaction_number, :transaction_type
   validates :transaction_type, inclusion: { in: TRANSACTION_TYPES }
   validates :amount, numericality: true

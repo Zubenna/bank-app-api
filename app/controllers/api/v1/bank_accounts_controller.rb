@@ -31,23 +31,23 @@ module Api
           transaction_type: transaction_type,
           bank_account_id: bank_account_id
         ).execute!
-        error = ::BankAccounts::ValidateWithdrawal.new(
-          amount: amount,
-          transaction_type: transaction_type,
-          bank_account_id: bank_account_id
-        ).execute!
-        if error[0] == 'Not enough funds'
-          render json: { errors: error }, status: 402
-        elsif errors[0] == 'Account not found'
-          render json: { errors: errors }, status: 402
-        else
-          bank_account = ::BankAccounts::PerformTransaction.new(
+        render json: { errors: errors }, status: 402 if errors[0] == 'Account not found'
+        if errors.empty?
+          error = ::BankAccounts::ValidateWithdrawal.new(
             amount: amount,
             transaction_type: transaction_type,
             bank_account_id: bank_account_id
           ).execute!
-          render json: { balance: bank_account.balance }
+          render json: { errors: error }, status: 402 if error[0] == 'Not enough funds'
         end
+        return unless errors.empty? && error.empty?
+
+        bank_account = ::BankAccounts::PerformTransaction.new(
+          amount: amount,
+          transaction_type: transaction_type,
+          bank_account_id: bank_account_id
+        ).execute!
+        render json: { balance: bank_account.balance }
       end
 
       def check_balance
@@ -71,10 +71,43 @@ module Api
         end
       end
 
+      def list_transactions
+        amount = params[:amount]
+        transaction_type = params[:transaction_type]
+        bank_account_id = params[:bank_account_id]
+        errors = ::BankAccounts::ValidateNewTransaction.new(
+          amount: amount,
+          transaction_type: transaction_type,
+          bank_account_id: bank_account_id
+        ).execute!
+        if errors[0] == 'Account not found'
+          render json: { errors: errors }, status: 402
+        else
+          bank_account = ::BankAccounts::PerformTransaction.new(
+            amount: amount,
+            transaction_type: transaction_type,
+            bank_account_id: bank_account_id
+          ).execute!
+          render json: { list: bank_account }
+        end
+      end
+
       def index
         @accounts = BankAccount.all
         @users = User.all
-        render json: { acc: accounts, user: users }
+        # @test = BankAccount.joins(:user).where(users: { country: "Australia" })
+
+        # @name = User.first_name.where(b)
+        render json: { acc: @accounts, user: @users }
+      end
+
+      def create
+        acc_number = BankAccount.create(bank_account_params)
+        if acc_number.save
+          render json: { status: 'created', message: 'Saved Bank Account Number', data: acc_number }
+        else
+          render json: { status: 500, message: 'Account Number not saved', errors: acc_number.errors }
+        end
       end
 
       def total_accounts
@@ -93,6 +126,12 @@ module Api
         else
           render json: { status: 'SUCCESS', message: 'No user created', data: 0 }, status: :ok
         end
+      end
+
+      private
+
+      def bank_account_params
+        params.permit(:user_id, :account_number)
       end
     end
   end
